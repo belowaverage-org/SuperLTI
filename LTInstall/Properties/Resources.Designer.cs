@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LTInstall.Properties
-{
-
-
+namespace LTInstall.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,52 +19,86 @@ namespace LTInstall.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LTInstall.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon icon {
+            get {
+                object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ##[Ps1 To Exe]
+        ///##
+        ///##Kd3HDZOFADWE8uK1
+        ///##Nc3NCtDXThU=
+        ///##Kd3HFJGZHWLWoLaVvnQnhQ==
+        ///##LM/RF4eFHHGZ7/K1
+        ///##K8rLFtDXTiW5
+        ///##OsHQCZGeTiiZ4NI=
+        ///##OcrLFtDXTiy5
+        ///##LM/BD5WYTiiZ4tI=
+        ///##McvWDJ+OTiiZ4tI=
+        ///##OMvOC56PFnzN8u+VslQ=
+        ///##M9jHFoeYB2Hc8u+VslQ=
+        ///##PdrWFpmIG2HcofKIo2QX
+        ///##OMfRFJyLFzWE8uK1
+        ///##KsfMAp/KUzWJ0g==
+        ///##OsfOAYaPHGbQvbyVvnQX
+        ///##LNzNAIWJGmPcoKHc7Do3uAuO
+        ///##LNzNAIWJGnvYv7eVvnQX
+        ///##M9zLA5mED3nfu77Q7TV64AuzAgg=
+        ///##NcDWAYKED3nfu77Q7TV64AuzAgg=
+        ///##OMvRB4KDHmHQvbyVvnQX
+        ///##P8HPFJGEFzWE8tI=
+        ///##KNzDAJWHD2fS8u+Vgw [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string install {
+            get {
+                return ResourceManager.GetString("install", resourceCulture);
             }
         }
     }
