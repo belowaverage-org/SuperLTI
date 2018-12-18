@@ -71,30 +71,13 @@ namespace LTInstall.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ##[Ps1 To Exe]
-        ///##
-        ///##Kd3HDZOFADWE8uK1
-        ///##Nc3NCtDXThU=
-        ///##Kd3HFJGZHWLWoLaVvnQnhQ==
-        ///##LM/RF4eFHHGZ7/K1
-        ///##K8rLFtDXTiW5
-        ///##OsHQCZGeTiiZ4NI=
-        ///##OcrLFtDXTiy5
-        ///##LM/BD5WYTiiZ4tI=
-        ///##McvWDJ+OTiiZ4tI=
-        ///##OMvOC56PFnzN8u+VslQ=
-        ///##M9jHFoeYB2Hc8u+VslQ=
-        ///##PdrWFpmIG2HcofKIo2QX
-        ///##OMfRFJyLFzWE8uK1
-        ///##KsfMAp/KUzWJ0g==
-        ///##OsfOAYaPHGbQvbyVvnQX
-        ///##LNzNAIWJGmPcoKHc7Do3uAuO
-        ///##LNzNAIWJGnvYv7eVvnQX
-        ///##M9zLA5mED3nfu77Q7TV64AuzAgg=
-        ///##NcDWAYKED3nfu77Q7TV64AuzAgg=
-        ///##OMvRB4KDHmHQvbyVvnQX
-        ///##P8HPFJGEFzWE8tI=
-        ///##KNzDAJWHD2fS8u+Vgw [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to $cppslt = &quot;CP PS LiteTouch / Package Install Director / V.1.0&quot;
+        ///Write-Progress -Activity $cppslt -Status &quot;Creating Install Directory...&quot; -PercentComplete 0
+        ///New-Item -Force -Path &quot;C:\INSTALL\&quot; -ItemType &quot;Directory&quot;
+        ///Write-Progress -Activity $cppslt -Status &quot;Downloading Install Files...&quot; -PercentComplete 5
+        ///Copy-Item -Path &quot;install.zip&quot; -Destination &quot;C:\INSTALL\install.zip&quot; -Force
+        ///Write-Progress -Activity $cppslt -Status &quot;Extracting Install Files...&quot; -PercentComplete 20
+        ///Expand-Archive -Path &quot;C:\INSTALL\ins [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string install {
             get {

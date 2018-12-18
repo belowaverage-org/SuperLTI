@@ -38,7 +38,7 @@
             this.progressBar.Location = new System.Drawing.Point(0, 0);
             this.progressBar.Margin = new System.Windows.Forms.Padding(0);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(241, 50);
+            this.progressBar.Size = new System.Drawing.Size(292, 50);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar.TabIndex = 0;
             // 
@@ -52,7 +52,7 @@
             this.statusLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.statusLbl.Location = new System.Drawing.Point(0, 50);
             this.statusLbl.Name = "statusLbl";
-            this.statusLbl.Size = new System.Drawing.Size(241, 66);
+            this.statusLbl.Size = new System.Drawing.Size(292, 64);
             this.statusLbl.TabIndex = 1;
             this.statusLbl.Text = "Starting...";
             this.statusLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -61,11 +61,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 116);
+            this.ClientSize = new System.Drawing.Size(292, 114);
             this.Controls.Add(this.statusLbl);
             this.Controls.Add(this.progressBar);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Main";
             this.Text = "LTInstall";
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }
