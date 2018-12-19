@@ -41,7 +41,6 @@ namespace LTInstall
             statusLbl.BeginInvoke(new MethodInvoker(delegate {
                 statusLbl.Text = progress.StatusDescription;
             }));
-            
         }
     }
 }
