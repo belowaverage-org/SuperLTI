@@ -12,7 +12,7 @@ namespace SuperLTI
             PowerShell ps = PowerShell.Create();
             ps.Streams.Progress.DataAdded += Progress_DataAdded;
             ps.InvocationStateChanged += Ps_InvocationStateChanged;
-            ps.AddScript(Properties.Resources.install);
+            ps.AddScript(Properties.Resources.SuperLTI);
             ps.BeginInvoke();
         }
 

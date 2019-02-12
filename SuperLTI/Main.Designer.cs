@@ -68,7 +68,7 @@
             this.MinimizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LTInstall";
+            this.Text = "SuperLTI";
             this.TopMost = true;
             this.ResumeLayout(false);
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperLTI", "LTInstall\SuperLTI.csproj", "{CF18D495-E6DB-46C7-8C87-E0C6FE40B8EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperLTI", "SuperLTI\SuperLTI.csproj", "{CF18D495-E6DB-46C7-8C87-E0C6FE40B8EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

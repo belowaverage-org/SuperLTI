@@ -71,18 +71,18 @@ namespace SuperLTI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $cppslt = &quot;CP PS LiteTouch / Package Install Director / V.1.1&quot;
+        ///   Looks up a localized string similar to $cppslt = &quot;CP PS LiteTouch / Package Install Director / V.1.2&quot;
         ///Write-Progress -Activity $cppslt -Status &quot;Saving ExecutionPolicy...&quot; -PercentComplete 0
         ///$cppsxp = Get-ExecutionPolicy
         ///Write-Progress -Activity $cppslt -Status &quot;Setting ExecutionPolicy...&quot; -PercentComplete 3
         ///Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
         ///Write-Progress -Activity $cppslt -Status &quot;Creating Install Directory...&quot; -PercentComplete 6
-        ///New-Item -Force -Path &quot;C:\INSTALL\&quot; -ItemType &quot;Directory&quot;
-        ///Write-Progress -Activity $cppslt - [rest of string was truncated]&quot;;.
+        ///New-Item -Force -Path &quot;C:\SuperLTI\&quot; -ItemType &quot;Directory&quot;
+        ///Write-Progress -Activity $cppslt  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string install {
+        internal static string SuperLTI {
             get {
-                return ResourceManager.GetString("install", resourceCulture);
+                return ResourceManager.GetString("SuperLTI", resourceCulture);
             }
         }
     }
