@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Management.Automation;
 
-namespace LTInstall
+namespace SuperLTI
 {
     public partial class Main : Form
     {

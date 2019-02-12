@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace LTInstall
+namespace SuperLTI
 {
     static class Program
     {
@@ -11,6 +11,7 @@ namespace LTInstall
         [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
             Application.Run(new Main());
         }
     }

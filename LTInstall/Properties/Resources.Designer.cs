@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LTInstall.Properties {
+namespace SuperLTI.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace LTInstall.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LTInstall.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SuperLTI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -71,13 +71,14 @@ namespace LTInstall.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $cppslt = &quot;CP PS LiteTouch / Package Install Director / V.1.0&quot;
-        ///Write-Progress -Activity $cppslt -Status &quot;Creating Install Directory...&quot; -PercentComplete 0
+        ///   Looks up a localized string similar to $cppslt = &quot;CP PS LiteTouch / Package Install Director / V.1.1&quot;
+        ///Write-Progress -Activity $cppslt -Status &quot;Saving ExecutionPolicy...&quot; -PercentComplete 0
+        ///$cppsxp = Get-ExecutionPolicy
+        ///Write-Progress -Activity $cppslt -Status &quot;Setting ExecutionPolicy...&quot; -PercentComplete 3
+        ///Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
+        ///Write-Progress -Activity $cppslt -Status &quot;Creating Install Directory...&quot; -PercentComplete 6
         ///New-Item -Force -Path &quot;C:\INSTALL\&quot; -ItemType &quot;Directory&quot;
-        ///Write-Progress -Activity $cppslt -Status &quot;Downloading Install Files...&quot; -PercentComplete 5
-        ///Copy-Item -Path &quot;install.zip&quot; -Destination &quot;C:\INSTALL\install.zip&quot; -Force
-        ///Write-Progress -Activity $cppslt -Status &quot;Extracting Install Files...&quot; -PercentComplete 20
-        ///Expand-Archive -Path &quot;C:\INSTALL\ins [rest of string was truncated]&quot;;.
+        ///Write-Progress -Activity $cppslt - [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string install {
             get {

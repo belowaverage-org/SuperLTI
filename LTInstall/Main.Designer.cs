@@ -1,4 +1,4 @@
-﻿namespace LTInstall
+﻿namespace SuperLTI
 {
     partial class Main
     {
@@ -38,7 +38,7 @@
             this.progressBar.Location = new System.Drawing.Point(0, 0);
             this.progressBar.Margin = new System.Windows.Forms.Padding(0);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(340, 50);
+            this.progressBar.Size = new System.Drawing.Size(314, 50);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar.TabIndex = 0;
             // 
@@ -52,7 +52,7 @@
             this.statusLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.statusLbl.Location = new System.Drawing.Point(0, 50);
             this.statusLbl.Name = "statusLbl";
-            this.statusLbl.Size = new System.Drawing.Size(340, 68);
+            this.statusLbl.Size = new System.Drawing.Size(314, 58);
             this.statusLbl.TabIndex = 1;
             this.statusLbl.Text = "Starting...";
             this.statusLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -61,7 +61,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 118);
+            this.ClientSize = new System.Drawing.Size(314, 108);
             this.Controls.Add(this.statusLbl);
             this.Controls.Add(this.progressBar);
             this.MaximizeBox = false;
