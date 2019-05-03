@@ -19,7 +19,7 @@ namespace SuperLTI.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -71,14 +71,14 @@ namespace SuperLTI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $cppslt = &quot;CP PS LiteTouch / Package Install Director / V.1.2&quot;
+        ///   Looks up a localized string similar to $cppslt = &quot;PS SuperLTI / Package Director / V.1.2&quot;
         ///Write-Progress -Activity $cppslt -Status &quot;Saving ExecutionPolicy...&quot; -PercentComplete 0
         ///$cppsxp = Get-ExecutionPolicy
         ///Write-Progress -Activity $cppslt -Status &quot;Setting ExecutionPolicy...&quot; -PercentComplete 3
         ///Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
-        ///Write-Progress -Activity $cppslt -Status &quot;Creating Install Directory...&quot; -PercentComplete 6
+        ///Write-Progress -Activity $cppslt -Status &quot;Creating SuperLTI Directory...&quot; -PercentComplete 6
         ///New-Item -Force -Path &quot;C:\SuperLTI\&quot; -ItemType &quot;Directory&quot;
-        ///Write-Progress -Activity $cppslt  [rest of string was truncated]&quot;;.
+        ///Write-Progress -Activity $cppslt -Status &quot;Do [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SuperLTI {
             get {

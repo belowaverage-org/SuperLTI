@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Management.Automation;
 using System.Windows.Forms;
 
 namespace SuperLTI
@@ -11,8 +12,7 @@ namespace SuperLTI
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.Run(new Main());
+            Application.Run(new ProgressDialogHost());
         }
     }
 }
