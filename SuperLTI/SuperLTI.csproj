@@ -95,6 +95,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
       <Private>False</Private>
@@ -106,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Copy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgressDialog.cs" />
     <Compile Include="ProgressDialogHost.cs">
@@ -120,6 +123,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ZipProgress.cs" />
     <EmbeddedResource Include="ProgressDialogHost.resx">
       <DependentUpon>ProgressDialogHost.cs</DependentUpon>
     </EmbeddedResource>

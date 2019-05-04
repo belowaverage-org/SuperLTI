@@ -46,7 +46,7 @@ namespace SuperLTI
             if (pd != null)
             {
                 pd.StopProgressDialog();
-                //Marshal.ReleaseComObject(pd);
+                Marshal.ReleaseComObject(pd);
                 pd = null;
             }
         }
@@ -188,6 +188,8 @@ namespace SuperLTI
 
         public static class shlwapi
         {
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass")]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA2101:SpecifyMarshalingForPInvokeStringArguments", MessageId = "1")]
             [DllImport("shlwapi.dll", CharSet = CharSet.Auto)]
             static extern bool PathCompactPath(IntPtr hDC, [In, Out] StringBuilder pszPath, int dx);
         }

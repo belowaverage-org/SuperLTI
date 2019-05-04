@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.SuspendLayout();
+            // 
             // ProgressDialogHost
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -38,6 +39,7 @@
             this.Name = "ProgressDialogHost";
             this.ShowInTaskbar = false;
             this.Text = "ProgressDialogHost";
+            this.Load += new System.EventHandler(this.ProgressDialogHost_Load);
             this.ResumeLayout(false);
 
         }
