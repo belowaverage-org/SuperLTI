@@ -12,7 +12,7 @@ namespace SuperLTI
 
         public ProgressDialog(IntPtr parentHandle)
         {
-            this._parentHandle = parentHandle;
+            _parentHandle = parentHandle;
         }
 
         public void ShowDialog(params PROGDLG[] flags)
@@ -21,11 +21,11 @@ namespace SuperLTI
             {
                 pd = (Win32IProgressDialog)new Win32ProgressDialog();
 
-                pd.SetTitle(this._Title);
-                pd.SetCancelMsg(this._CancelMessage, null);
-                pd.SetLine(1, this._Line1, false, IntPtr.Zero);
-                pd.SetLine(2, this._Line2, false, IntPtr.Zero);
-                pd.SetLine(3, this._Line3, false, IntPtr.Zero);
+                pd.SetTitle(_Title);
+                pd.SetCancelMsg(_CancelMessage, null);
+                pd.SetLine(1, _Line1, false, IntPtr.Zero);
+                pd.SetLine(2, _Line2, false, IntPtr.Zero);
+                pd.SetLine(3, _Line3, false, IntPtr.Zero);
 
                 PROGDLG dialogFlags = PROGDLG.Normal;
                 if (flags.Length != 0)
@@ -36,8 +36,8 @@ namespace SuperLTI
                         dialogFlags = dialogFlags | flags[i];
                     }
                 }
-
-                pd.StartProgressDialog(this._parentHandle, null, dialogFlags, IntPtr.Zero);
+                pd.Timer(PDTIMER.Resume, null);
+                pd.StartProgressDialog(_parentHandle, null, dialogFlags, IntPtr.Zero);
             }
         }
 
@@ -56,14 +56,14 @@ namespace SuperLTI
         {
             get
             {
-                return this._Title;
+                return _Title;
             }
             set
             {
-                this._Title = value;
+                _Title = value;
                 if (pd != null)
                 {
-                    pd.SetTitle(this._Title);
+                    pd.SetTitle(_Title);
                 }
             }
         }
@@ -73,14 +73,14 @@ namespace SuperLTI
         {
             get
             {
-                return this._CancelMessage;
+                return _CancelMessage;
             }
             set
             {
-                this._CancelMessage = value;
+                _CancelMessage = value;
                 if (pd != null)
                 {
-                    pd.SetCancelMsg(this._CancelMessage, null);
+                    pd.SetCancelMsg(_CancelMessage, null);
                 }
             }
         }
@@ -90,14 +90,14 @@ namespace SuperLTI
         {
             get
             {
-                return this._Line1;
+                return _Line1;
             }
             set
             {
-                this._Line1 = value;
+                _Line1 = value;
                 if (pd != null)
                 {
-                    pd.SetLine(1, this._Line1, false, IntPtr.Zero);
+                    pd.SetLine(1, _Line1, false, IntPtr.Zero);
                 }
             }
         }
@@ -107,14 +107,14 @@ namespace SuperLTI
         {
             get
             {
-                return this._Line2;
+                return _Line2;
             }
             set
             {
-                this._Line2 = value;
+                _Line2 = value;
                 if (pd != null)
                 {
-                    pd.SetLine(2, this._Line2, false, IntPtr.Zero);
+                    pd.SetLine(2, _Line2, false, IntPtr.Zero);
                 }
             }
         }
@@ -124,14 +124,14 @@ namespace SuperLTI
         {
             get
             {
-                return this._Line3;
+                return _Line3;
             }
             set
             {
-                this._Line3 = value;
+                _Line3 = value;
                 if (pd != null)
                 {
-                    pd.SetLine(3, this._Line3, false, IntPtr.Zero);
+                    pd.SetLine(3, _Line3, false, IntPtr.Zero);
                 }
             }
         }
@@ -141,14 +141,15 @@ namespace SuperLTI
         {
             get
             {
-                return this._value;
+                return _value;
             }
             set
             {
-                this._value = value;
+                _value = value;
                 if (pd != null)
                 {
-                    pd.SetProgress(this._value, this._maximum);
+                    pd.Timer(PDTIMER.Reset, null);
+                    pd.SetProgress(_value, _maximum);
                 }
             }
         }
@@ -158,14 +159,14 @@ namespace SuperLTI
         {
             get
             {
-                return this._maximum;
+                return _maximum;
             }
             set
             {
-                this._maximum = value;
+                _maximum = value;
                 if (pd != null)
                 {
-                    pd.SetProgress(this._value, this._maximum);
+                    pd.SetProgress(_value, _maximum);
                 }
             }
         }
