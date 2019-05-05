@@ -5,6 +5,7 @@ using ProgressReporting;
 using System.IO;
 using System.Threading.Tasks;
 using System.IO.Compression;
+using Humanizer;
 
 namespace SuperLTI
 {
@@ -13,16 +14,20 @@ namespace SuperLTI
         private ProgressReporter progReport = new ProgressReporter();
         private int ProgressIntervalPercent = 0;
         private string ProgressIntervalDetails = " ";
+        private string ProgressIntervalTitle = "SuperLTI";
         private ProgressDialog progDialog = null;
         private int previousProgress = 0;
         private Timer ProgressInterval = new Timer();
+        private Timer CancelInterval = new Timer();
         private Progress<ZipProgress> ZipProgress = new Progress<ZipProgress>();
+        private PowerShell ps = null;
         public ProgressDialogHost()
         {
             InitializeComponent();
+            Icon = Properties.Resources.icon;
             progDialog = new ProgressDialog(Handle);
             progDialog.Title = "SuperLTI";
-            progDialog.CancelMessage = "Cancelling operation...";
+            progDialog.CancelMessage = "Stopping SuperLTI...";
             progDialog.Maximum = 100;
             progDialog.Line1 = " ";
             progDialog.Line2 = " ";
@@ -35,28 +40,43 @@ namespace SuperLTI
 
         private void ProgressInterval_Tick(object sender, EventArgs e)
         {
-            UpdateProgress(ProgressIntervalPercent, "Copying...", ProgressIntervalDetails);
+            UpdateProgress(ProgressIntervalPercent, ProgressIntervalTitle, ProgressIntervalDetails);
         }
 
         private async void ProgressDialogHost_Load(object sender, EventArgs e)
         {
             progReport.Start(100);
             ZipProgress.ProgressChanged += ZipProgress_ProgressChanged;
+            CancelInterval.Interval = 100;
+            CancelInterval.Start();
+            CancelInterval.Tick += CancelInterval_Tick;
             ProgressInterval.Interval = 100;
             ProgressInterval.Tick += ProgressInterval_Tick;
             ProgressInterval.Start();
             await CopyAndExtractTask();
             ProgressInterval.Stop();
-            PowerShell ps = PowerShell.Create();
+            ps = PowerShell.Create();
             ps.Streams.Progress.DataAdded += Progress_DataAdded;
             ps.InvocationStateChanged += Ps_InvocationStateChanged;
             ps.AddScript(Properties.Resources.SuperLTI);
             ps.BeginInvoke();
         }
 
+        private void CancelInterval_Tick(object sender, EventArgs e)
+        {
+            if(progDialog.HasUserCancelled)
+            {
+                if(ps != null)
+                {
+                    ps.Stop();
+                }
+                Application.Exit();
+            }
+        }
+
         private void ZipProgress_ProgressChanged(object sender, ZipProgress e)
         {
-            ProgressIntervalDetails = "Extracting: " + e.CurrentItem + "...";
+            ProgressIntervalDetails = e.CurrentItem;
             ProgressIntervalPercent = (int)Math.Round((double)e.Processed / (double)e.Total);
         }
 
@@ -65,9 +85,16 @@ namespace SuperLTI
             return Task.Run(() =>
             {
                 Directory.CreateDirectory(@"C:\SuperLTI");
-                Copy.CopyTo(new FileInfo("SuperLTI.zip"), new FileInfo(@"C:\SuperLTI\SuperLTI.zip"), new Action<int>((int progress) => {
+                FileInfo zip = new FileInfo("SuperLTI.zip");
+                long totalBytes = zip.Length;
+                string format = "0.0";
+                ProgressIntervalTitle = "Copying files...";
+                Copy.CopyTo(zip, new FileInfo(@"C:\SuperLTI\SuperLTI.zip"), new Action<int>((int progress) => {
+                    string copied = ((double)totalBytes * ((double)progress / 100)).Bytes().Humanize(format);
+                    ProgressIntervalDetails = copied + " / " + totalBytes.Bytes().Humanize(format);
                     ProgressIntervalPercent = progress;
                 }));
+                ProgressIntervalTitle = "Expanding files...";
                 MyZipFileExtensions.ExtractToDirectory(ZipFile.Open(@"C:\SuperLTI\SuperLTI.zip", ZipArchiveMode.Read), @"C:\SuperLTI", ZipProgress);
             });
         }
@@ -92,10 +119,10 @@ namespace SuperLTI
 
         private string GenerateTimeRemaining()
         {
-            string str = TimeSpan2.FromSeconds(progReport.RemainingTimeEstimate.Seconds).ToString("f");
-            if (str == "")
+            string str = " ";
+            if(progReport.RemainingTimeEstimate.Seconds >= 1)
             {
-                str = " ";
+                str = progReport.RemainingTimeEstimate.Humanize();
             }
             return str;
         }
@@ -110,8 +137,7 @@ namespace SuperLTI
             {
                 progReport.ReportProgress(Percent);
             }
-            BeginInvoke(new Action(() =>
-            {
+            BeginInvoke(new Action(() => {
                 if (Activity != null)
                 {
                     progDialog.Line1 = Activity;

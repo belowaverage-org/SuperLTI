@@ -1,4 +1,4 @@
-﻿$cppslt = "SuperLTI"
+﻿$cppslt = "Preparing..."
 Write-Progress -Activity $cppslt -Status "Saving ExecutionPolicy..." -PercentComplete 0
 $cppsxp = Get-ExecutionPolicy
 Write-Progress -Activity $cppslt -Status "Setting ExecutionPolicy..." -PercentComplete 3
