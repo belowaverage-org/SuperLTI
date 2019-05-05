@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SuperLTI
 {
@@ -12,7 +13,10 @@ namespace SuperLTI
         [STAThread]
         static void Main()
         {
-            Application.Run(new ProgressDialogHost());
+            if (File.Exists("SuperLTI.zip"))
+            {
+                Application.Run(new ProgressDialogHost());
+            }
         }
     }
 }
