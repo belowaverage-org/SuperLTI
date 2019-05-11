@@ -17,6 +17,7 @@ namespace SuperLTI
         private Timer CancelInterval = new Timer();
         private Progress<ZipProgress> ZipProgress = new Progress<ZipProgress>();
         private PowerShell ps = null;
+        private bool IgnoreProgressUI = false;
         public ProgressDialogHost()
         {
             InitializeComponent();
@@ -28,11 +29,18 @@ namespace SuperLTI
             progDialog.Line1 = " ";
             progDialog.Line2 = " ";
             progDialog.Line3 = " ";
-            progDialog.ShowDialog(
-                ProgressDialog.PROGDLG.Modal |
-                ProgressDialog.PROGDLG.AutoTime |
-                ProgressDialog.PROGDLG.Normal
-            );
+            try
+            {
+                progDialog.ShowDialog(
+                    ProgressDialog.PROGDLG.Modal |
+                    ProgressDialog.PROGDLG.AutoTime |
+                    ProgressDialog.PROGDLG.Normal
+                );
+            }
+            catch (OutOfMemoryException) //Win32 Progress Dialog failed to show.
+            {
+                IgnoreProgressUI = true;
+            }
         }
 
         private void ProgressInterval_Tick(object sender, EventArgs e)
@@ -42,16 +50,22 @@ namespace SuperLTI
 
         private async void ProgressDialogHost_Load(object sender, EventArgs e)
         {
-            ZipProgress.ProgressChanged += ZipProgress_ProgressChanged;
-            CancelInterval.Interval = 1000;
-            CancelInterval.Start();
-            CancelInterval.Tick += CancelInterval_Tick;
-            ProgressInterval.Interval = 250;
-            ProgressInterval.Tick += ProgressInterval_Tick;
-            ProgressInterval.Start();
+            if(!IgnoreProgressUI)
+            {
+                ZipProgress.ProgressChanged += ZipProgress_ProgressChanged;
+                CancelInterval.Interval = 1000;
+                CancelInterval.Start();
+                CancelInterval.Tick += CancelInterval_Tick;
+                ProgressInterval.Interval = 250;
+                ProgressInterval.Tick += ProgressInterval_Tick;
+                ProgressInterval.Start();
+            }
             await CopyAndExtractTask();
             ps = PowerShell.Create();
-            ps.Streams.Progress.DataAdded += Progress_DataAdded;
+            if (!IgnoreProgressUI)
+            {
+                ps.Streams.Progress.DataAdded += Progress_DataAdded;
+            }
             ps.InvocationStateChanged += Ps_InvocationStateChanged;
             ps.AddScript(Properties.Resources.SuperLTI);
             ps.BeginInvoke();
@@ -117,6 +131,10 @@ namespace SuperLTI
         {
             BeginInvoke(new Action(() => {
                 progDialog.Title = "SuperLTI";
+                if(progDialog.Value > (uint)Percent)
+                {
+                    progDialog.ResetTimer();
+                }
                 if (Activity != null)
                 {
                     progDialog.Line1 = Activity;

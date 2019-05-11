@@ -182,6 +182,11 @@ namespace SuperLTI
             }
         }
 
+        public void ResetTimer()
+        {
+            pd.Timer(PDTIMER.Reset, null);
+        }
+
         #region "Win32 Stuff"
         // The below was copied from: http://pinvoke.net/default.aspx/Interfaces/IProgressDialog.html
 

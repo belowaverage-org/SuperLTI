@@ -12,23 +12,19 @@ namespace SuperLTI
         {
             return Converter(Bytes);
         }
-        private static double Round(this double Bytes)
-        {
-            return Math.Round(Bytes, 2);
-        }
         private static string Converter(double Bytes)
         {
             if (Bytes >= (1024 * 1024 * 1024))
             {
-                return (Bytes / 1024 / 1024 / 1024).Round() + " Gigabytes";
+                return Math.Round(Bytes / 1024 / 1024 / 1024, 2) + " GB";
             }
             else if (Bytes >= (1024 * 1024))
             {
-                return (Bytes / 1024 / 1024).Round() + " Megabytes";
+                return Math.Round(Bytes / 1024 / 1024) + " MB";
             }
             else if (Bytes < (1024 * 1024))
             {
-                return (Bytes / 1024).Round() + " Kilobytes";
+                return Math.Round(Bytes / 1024) + " KB";
             }
             else
             {
