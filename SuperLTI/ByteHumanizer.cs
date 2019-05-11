@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperLTI
 {
@@ -22,15 +18,15 @@ namespace SuperLTI
         }
         private static string Converter(double Bytes)
         {
-            if (Bytes >= (1024 * 1024 * 1024)) //Greater than Gibibyte
+            if (Bytes >= (1024 * 1024 * 1024))
             {
                 return (Bytes / 1024 / 1024 / 1024).Round() + " Gigabytes";
             }
-            else if (Bytes >= (1024 * 1024)) //Greater than Mebibyte
+            else if (Bytes >= (1024 * 1024))
             {
                 return (Bytes / 1024 / 1024).Round() + " Megabytes";
             }
-            else if (Bytes < (1024 * 1024)) //Less than Mebibyte
+            else if (Bytes < (1024 * 1024))
             {
                 return (Bytes / 1024).Round() + " Kilobytes";
             }
