@@ -36,7 +36,7 @@ namespace SuperLTI
                         dialogFlags = dialogFlags | flags[i];
                     }
                 }
-                pd.Timer(PDTIMER.Resume, null);
+                pd.Timer(PDTIMER.Reset, null);
                 pd.StartProgressDialog(_parentHandle, null, dialogFlags, IntPtr.Zero);
             }
         }
@@ -148,7 +148,6 @@ namespace SuperLTI
                 _value = value;
                 if (pd != null)
                 {
-                    pd.Timer(PDTIMER.Reset, null);
                     pd.SetProgress(_value, _maximum);
                 }
             }
