@@ -71,14 +71,14 @@ namespace SuperLTI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $cppslt = &quot;PS SuperLTI / Package Director / V.1.2&quot;
+        ///   Looks up a localized string similar to $cppslt = &quot;Preparing...&quot;
         ///Write-Progress -Activity $cppslt -Status &quot;Saving ExecutionPolicy...&quot; -PercentComplete 0
         ///$cppsxp = Get-ExecutionPolicy
         ///Write-Progress -Activity $cppslt -Status &quot;Setting ExecutionPolicy...&quot; -PercentComplete 3
         ///Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
-        ///Write-Progress -Activity $cppslt -Status &quot;Creating SuperLTI Directory...&quot; -PercentComplete 6
-        ///New-Item -Force -Path &quot;C:\SuperLTI\&quot; -ItemType &quot;Directory&quot;
-        ///Write-Progress -Activity $cppslt -Status &quot;Do [rest of string was truncated]&quot;;.
+        ///#Write-Progress -Activity $cppslt -Status &quot;Creating SuperLTI Directory...&quot; -PercentComplete 6
+        ///#New-Item -Force -Path &quot;C:\SuperLTI\&quot; -ItemType &quot;Directory&quot;
+        ///#Write-Progress -Activity $cppslt -Status &quot;Downloading SuperLTI File [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SuperLTI {
             get {
