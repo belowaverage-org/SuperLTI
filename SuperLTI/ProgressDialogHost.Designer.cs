@@ -33,7 +33,7 @@
             // ProgressDialogHost
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(0, 0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -41,9 +41,10 @@
             this.Name = "ProgressDialogHost";
             this.Opacity = 0D;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProgressDialogHost";
-            this.TransparencyKey = System.Drawing.Color.White;
+            this.TopMost = true;
+            this.TransparencyKey = System.Drawing.Color.Black;
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.ProgressDialogHost_Load);
             this.ResumeLayout(false);
