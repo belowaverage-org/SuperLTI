@@ -1,5 +1,9 @@
 # SuperLTI
-LTI Lite Touch MDT Install Controller
+<p align="center">
+<h3 align="center">Super Lite Touch Instructor<h3>
+  <img src="https://raw.githubusercontent.com/krisdb2009/documentation/master/images/superlti.gif">
+</p>
+
 
 ### Why?
 Because MDT and PowerShell don't mix very well.
