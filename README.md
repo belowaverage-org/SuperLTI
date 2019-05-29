@@ -4,8 +4,7 @@
 </h1>
 <br>
 
-<img height="100" src="https://raw.githubusercontent.com/krisdb2009/documentation/master/images/supersweet.png">
-<img height="100" src="https://raw.githubusercontent.com/belowaverage-org/SuperLTI/master/SuperLTI/Resources/icon.ico">
+<img height="100" src="https://raw.githubusercontent.com/krisdb2009/documentation/master/images/supersweet.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="100" src="https://raw.githubusercontent.com/belowaverage-org/SuperLTI/master/SuperLTI/Resources/icon.ico">
 
 <br><br>
 <img src="https://raw.githubusercontent.com/krisdb2009/documentation/master/images/superlti.gif">
