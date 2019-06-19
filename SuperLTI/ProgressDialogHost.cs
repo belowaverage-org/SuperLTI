@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading.Tasks;
 using System.IO.Compression;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace SuperLTI
 {
@@ -18,8 +20,10 @@ namespace SuperLTI
         private Progress<ZipProgress> ZipProgress = new Progress<ZipProgress>();
         private PowerShell ps = null;
         private bool IgnoreProgressUI = false;
-        public ProgressDialogHost()
+        private string[] Arguments = new string[0];
+        public ProgressDialogHost(string[] args)
         {
+            Arguments = args;
             InitializeComponent();
             Icon = Properties.Resources.icon;
             progDialog = new ProgressDialog(Handle);
@@ -42,12 +46,10 @@ namespace SuperLTI
                 IgnoreProgressUI = true;
             }
         }
-
         private void ProgressInterval_Tick(object sender, EventArgs e)
         {
             UpdateProgress(ProgressIntervalPercent, ProgressIntervalTitle, ProgressIntervalDetails);
         }
-
         private async void ProgressDialogHost_Load(object sender, EventArgs e)
         {
             if(!IgnoreProgressUI)
@@ -66,11 +68,24 @@ namespace SuperLTI
             {
                 ps.Streams.Progress.DataAdded += Progress_DataAdded;
             }
-            ps.InvocationStateChanged += Ps_InvocationStateChanged;
+            for(var count = 0; count < Arguments.Length; count++)
+            {
+                if(count % 2 == 0)
+                {
+                    ps.AddCommand("Set-Variable");
+                    ps.AddParameter("Name", Arguments[count]);
+                }
+                else
+                {
+                    ps.AddParameter("Value", Arguments[count]);
+                }
+            }
             ps.AddScript(Properties.Resources.SuperLTI);
-            ps.BeginInvoke();
+            await Task.Run(() => {
+                ps.Invoke();
+                Application.Exit();
+            });
         }
-
         private void CancelInterval_Tick(object sender, EventArgs e)
         {
             if(progDialog.HasUserCancelled)
@@ -82,13 +97,11 @@ namespace SuperLTI
                 Application.Exit();
             }
         }
-
         private void ZipProgress_ProgressChanged(object sender, ZipProgress e)
         {
             ProgressIntervalDetails = e.CurrentItem;
             ProgressIntervalPercent = (int)Math.Round((double)e.Processed / (double)e.Total);
         }
-
         private Task CopyAndExtractTask()
         {
             return Task.Run(() =>
@@ -106,15 +119,6 @@ namespace SuperLTI
                 MyZipFileExtensions.ExtractToDirectory(ZipFile.Open(@"C:\SuperLTI\SuperLTI.zip", ZipArchiveMode.Read), @"C:\SuperLTI", ZipProgress);
             });
         }
-
-        private void Ps_InvocationStateChanged(object sender, PSInvocationStateChangedEventArgs e)
-        {
-            if (e.InvocationStateInfo.State.ToString() == "Completed")
-            {
-                Application.Exit();
-            }
-        }
-
         private void Progress_DataAdded(object sender, DataAddedEventArgs e)
         {
             PSDataCollection<ProgressRecord> progressRecords = (PSDataCollection<ProgressRecord>)sender;
@@ -126,7 +130,6 @@ namespace SuperLTI
                 ProgressIntervalPercent = progress.PercentComplete;
             }
         }
-
         private void UpdateProgress(int Percent, string Activity = null, string Status = null)
         {
             BeginInvoke(new Action(() => {

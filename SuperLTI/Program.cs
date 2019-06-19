@@ -11,11 +11,11 @@ namespace SuperLTI
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             if (File.Exists("SuperLTI.zip"))
             {
-                Application.Run(new ProgressDialogHost());
+                Application.Run(new ProgressDialogHost(args));
             }
         }
     }
