@@ -5,7 +5,7 @@
 <br>
 
 <p align="center">
- <a href="https://belowaverage.visualstudio.com/SuperLTI/_build">
+ <a target="_TOP" href="https://belowaverage.visualstudio.com/SuperLTI/_build">
   <img src="https://belowaverage.visualstudio.com/SuperLTI/_apis/build/status/SuperLTI-.NET%20Desktop-CI?branchName=master"><br><br>
  </a>
  <img height="100" src="https://raw.githubusercontent.com/krisdb2009/documentation/master/images/supersweet.png">
