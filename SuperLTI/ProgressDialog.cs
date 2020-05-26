@@ -20,13 +20,11 @@ namespace SuperLTI
             if (pd == null)
             {
                 pd = (Win32IProgressDialog)new Win32ProgressDialog();
-
                 pd.SetTitle(_Title);
                 pd.SetCancelMsg(_CancelMessage, null);
                 pd.SetLine(1, _Line1, false, IntPtr.Zero);
                 pd.SetLine(2, _Line2, false, IntPtr.Zero);
                 pd.SetLine(3, _Line3, false, IntPtr.Zero);
-
                 PROGDLG dialogFlags = PROGDLG.Normal;
                 if (flags.Length != 0)
                 {
@@ -181,12 +179,14 @@ namespace SuperLTI
                     return false;
             }
         }
-
         public void ResetTimer()
         {
             pd.Timer(PDTIMER.Reset, null);
         }
-
+        public void ResumeTimer()
+        {
+            pd.Timer(PDTIMER.Resume, null);
+        }
         #region "Win32 Stuff"
         // The below was copied from: http://pinvoke.net/default.aspx/Interfaces/IProgressDialog.html
 

@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="ByteHumanizer.cs" />
     <Compile Include="Copy.cs" />
+    <Compile Include="Win32.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgressDialog.cs" />
     <Compile Include="ProgressDialogHost.cs">

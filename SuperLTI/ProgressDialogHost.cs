@@ -4,8 +4,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading.Tasks;
 using System.IO.Compression;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
+using System.Drawing;
 
 namespace SuperLTI
 {
@@ -21,13 +20,16 @@ namespace SuperLTI
         private PowerShell ps = null;
         private bool IgnoreProgressUI = false;
         private string[] Arguments = new string[0];
+        private string WindowGUID = Guid.NewGuid().ToString();
+        private IntPtr dialog = IntPtr.Zero;
+        private Icon dialogIcon = new Icon(Properties.Resources.icon, 16, 16);
         public ProgressDialogHost(string[] args)
         {
             Arguments = args;
             InitializeComponent();
             Icon = Properties.Resources.icon;
             progDialog = new ProgressDialog(Handle);
-            progDialog.Title = "SuperLTI";
+            progDialog.Title = WindowGUID;
             progDialog.CancelMessage = "Stopping SuperLTI...";
             progDialog.Maximum = 100;
             progDialog.Line1 = " ";
@@ -40,6 +42,8 @@ namespace SuperLTI
                     ProgressDialog.PROGDLG.AutoTime |
                     ProgressDialog.PROGDLG.Normal
                 );
+                dialog = Win32.FindWindowEx(IntPtr.Zero, IntPtr.Zero, "#32770", WindowGUID);
+                progDialog.ResumeTimer();
             }
             catch (OutOfMemoryException) //Win32 Progress Dialog failed to show.
             {
@@ -52,7 +56,7 @@ namespace SuperLTI
         }
         private async void ProgressDialogHost_Load(object sender, EventArgs e)
         {
-            if(!IgnoreProgressUI)
+            if (!IgnoreProgressUI)
             {
                 ZipProgress.ProgressChanged += ZipProgress_ProgressChanged;
                 CancelInterval.Interval = 1000;
@@ -132,6 +136,8 @@ namespace SuperLTI
         }
         private void UpdateProgress(int Percent, string Activity = null, string Status = null)
         {
+            Win32.SendMessage(dialog, 0x80, 0, dialogIcon.Handle);
+            Win32.SendMessage(dialog, 0x80, 1, Properties.Resources.icon.Handle);
             BeginInvoke(new Action(() => {
                 progDialog.Title = "SuperLTI";
                 if(progDialog.Value > (uint)Percent)
