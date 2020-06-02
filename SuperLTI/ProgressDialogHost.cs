@@ -43,7 +43,7 @@ namespace SuperLTI
                     ProgressDialog.PROGDLG.Normal
                 );
                 dialog = Win32.FindWindowEx(IntPtr.Zero, IntPtr.Zero, "#32770", WindowGUID);
-                progDialog.ResumeTimer();
+                progDialog.ResetTimer();
             }
             catch (OutOfMemoryException) //Win32 Progress Dialog failed to show.
             {
