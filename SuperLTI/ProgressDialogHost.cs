@@ -20,12 +20,14 @@ namespace SuperLTI
         private PowerShell ps = null;
         private bool IgnoreProgressUI = false;
         private string[] Arguments = new string[0];
+        private string ZipPath = string.Empty;
         private string WindowGUID = Guid.NewGuid().ToString();
         private IntPtr dialog = IntPtr.Zero;
         private Icon dialogIcon = new Icon(Properties.Resources.icon, 16, 16);
-        public ProgressDialogHost(string[] args)
+        public ProgressDialogHost(string[] args, string zipPath)
         {
             Arguments = args;
+            ZipPath = zipPath;
             InitializeComponent();
             Icon = Properties.Resources.icon;
             progDialog = new ProgressDialog(Handle);
@@ -111,7 +113,7 @@ namespace SuperLTI
             return Task.Run(() =>
             {
                 Directory.CreateDirectory(@"C:\SuperLTI");
-                FileInfo zip = new FileInfo("SuperLTI.zip");
+                FileInfo zip = new FileInfo(ZipPath);
                 long totalBytes = zip.Length;
                 ProgressIntervalTitle = "Copying files...";
                 Copy.CopyTo(zip, new FileInfo(@"C:\SuperLTI\SuperLTI.zip"), new Action<int>((int progress) => {
