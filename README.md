@@ -1,5 +1,5 @@
 <h1 align="center">
- <img height="25" src="https://raw.githubusercontent.com/belowaverage-org/SuperLTI/master/SuperLTIAssets/logo.svg">
+ <img height="25" src="https://raw.githubusercontent.com/belowaverage-org/SuperLTI/master/SuperLTIAssets/logo_tiny.svg">
  SuperLTI
 </h1>
 <br>
