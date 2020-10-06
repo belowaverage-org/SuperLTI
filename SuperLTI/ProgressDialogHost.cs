@@ -69,7 +69,11 @@ namespace SuperLTI
                 ProgressInterval.Start();
             }
             await CopyAndExtractTask();
+            
             ps = PowerShell.Create();
+            // Add a var to indicate SuperLTI is what's starting the process since the script can't rely on SuperLTI.exe being the starting process
+            ps.AddCommand("Set-Content").AddParameter("Path", "env:SuperLTI").AddParameter("Value", "$True");
+            
             if (!IgnoreProgressUI)
             {
                 ps.Streams.Progress.DataAdded += Progress_DataAdded;
