@@ -100,16 +100,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ByteHumanizer.cs" />
-    <Compile Include="Copy.cs" />
-    <Compile Include="Win32.cs" />
+    <Compile Include="Classes\ByteHumanizer.cs" />
+    <Compile Include="Classes\Copy.cs" />
+    <Compile Include="Classes\Logger.cs" />
+    <Compile Include="Classes\PSRunspace.cs" />
+    <Compile Include="Classes\Win32.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProgressDialog.cs" />
-    <Compile Include="ProgressDialogHost.cs">
+    <Compile Include="Classes\ProgressDialog.cs" />
+    <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProgressDialogHost.Designer.cs">
-      <DependentUpon>ProgressDialogHost.cs</DependentUpon>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -117,9 +119,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ZipProgress.cs" />
-    <EmbeddedResource Include="ProgressDialogHost.resx">
-      <DependentUpon>ProgressDialogHost.cs</DependentUpon>
+    <Compile Include="Classes\ZipProgress.cs" />
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

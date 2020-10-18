@@ -1,6 +1,6 @@
 ﻿namespace SuperLTI
 {
-    partial class ProgressDialogHost
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.

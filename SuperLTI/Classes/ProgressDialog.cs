@@ -6,20 +6,17 @@ namespace SuperLTI
 {
     public class ProgressDialog
     {
-        private IntPtr _parentHandle;
-
-        private Win32IProgressDialog pd = null;
-
+        private readonly IntPtr _parentHandle;
+        private IWin32IProgressDialog pd = null;
         public ProgressDialog(IntPtr parentHandle)
         {
             _parentHandle = parentHandle;
         }
-
         public void ShowDialog(params PROGDLG[] flags)
         {
             if (pd == null)
             {
-                pd = (Win32IProgressDialog)new Win32ProgressDialog();
+                pd = (IWin32IProgressDialog)new Win32ProgressDialog();
                 pd.SetTitle(_Title);
                 pd.SetCancelMsg(_CancelMessage, null);
                 pd.SetLine(1, _Line1, false, IntPtr.Zero);
@@ -31,14 +28,13 @@ namespace SuperLTI
                     dialogFlags = flags[0];
                     for (var i = 1; i < flags.Length; i++)
                     {
-                        dialogFlags = dialogFlags | flags[i];
+                        dialogFlags |= flags[i];
                     }
                 }
                 pd.Timer(PDTIMER.Reset, null);
                 pd.StartProgressDialog(_parentHandle, null, dialogFlags, IntPtr.Zero);
             }
         }
-
         public void CloseDialog()
         {
             if (pd != null)
@@ -48,7 +44,6 @@ namespace SuperLTI
                 pd = null;
             }
         }
-
         private string _Title = string.Empty;
         public string Title
         {
@@ -65,7 +60,6 @@ namespace SuperLTI
                 }
             }
         }
-
         private string _CancelMessage = string.Empty;
         public string CancelMessage
         {
@@ -82,7 +76,6 @@ namespace SuperLTI
                 }
             }
         }
-
         private string _Line1 = string.Empty;
         public string Line1
         {
@@ -99,7 +92,6 @@ namespace SuperLTI
                 }
             }
         }
-
         private string _Line2 = string.Empty;
         public string Line2
         {
@@ -116,7 +108,6 @@ namespace SuperLTI
                 }
             }
         }
-
         private string _Line3 = string.Empty;
         public string Line3
         {
@@ -133,7 +124,6 @@ namespace SuperLTI
                 }
             }
         }
-
         private uint _value = 0;
         public uint Value
         {
@@ -150,7 +140,6 @@ namespace SuperLTI
                 }
             }
         }
-
         private uint _maximum = 100;
         public uint Maximum
         {
@@ -186,19 +175,17 @@ namespace SuperLTI
         }
         #region "Win32 Stuff"
         // The below was copied from: http://pinvoke.net/default.aspx/Interfaces/IProgressDialog.html
-
-        public static class shlwapi
+        public static class Shlwapi
         {
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass")]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA2101:SpecifyMarshalingForPInvokeStringArguments", MessageId = "1")]
             [DllImport("shlwapi.dll", CharSet = CharSet.Auto)]
             static extern bool PathCompactPath(IntPtr hDC, [In, Out] StringBuilder pszPath, int dx);
         }
-
         [ComImport]
         [Guid("EBBC7C04-315E-11d2-B62F-006097DF5BD4")]
         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-        public interface Win32IProgressDialog
+        public interface IWin32IProgressDialog
         {
             /// <summary>
             /// Starts the progress dialog box.
@@ -339,7 +326,6 @@ namespace SuperLTI
             /// <summary>Progress has been resumed.</summary>
             Resume = (0x03)
         }
-
         [Flags]
         public enum PROGDLG : uint //DWORD
         {
